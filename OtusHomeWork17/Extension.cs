@@ -6,7 +6,7 @@ namespace OtusHomeWork17
     {
         public static T GetMax<T>(this IEnumerable e, Func<T, float> getParameter) where T : class
         {
-            T max = default(T);
+            T? max = default;
             float min = float.MinValue;
             foreach (T item in e)
             {

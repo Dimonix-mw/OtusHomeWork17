@@ -2,17 +2,26 @@
 
 var path = Directory.GetCurrentDirectory();
 var filesName = new List<string>();
-
+var needCountFileSearch = 3;
 var fileFinder = new FileFinder();
+
 fileFinder.FileFound += (s, e) =>
 {
     Console.WriteLine($"Найден файл => {e.fileName}");
     filesName.Add(e.fileName);
-    e.stopSearch = filesName.Count >= 3;
+    e.stopSearch = filesName.Count >= needCountFileSearch;
 };
 
 fileFinder.Search(path);
 
-var fileNameMaxLength = filesName.GetMax<string>((f) => f.Length);
+if (filesName.Count > 0)
+{
+    var fileNameMaxLength = filesName.GetMax<string>(f => f.Length);
+    Console.WriteLine($"Файл с самым длинным названием => {fileNameMaxLength}");
+} else
+{
+    Console.WriteLine($"В дирректории {path} нет файлов.");
+}
 
-Console.WriteLine($"Файл с самым длинным названием => {fileNameMaxLength}");
+
+
