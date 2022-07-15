@@ -1,8 +1,7 @@
 ﻿using OtusHomeWork17;
-
+const int needCountFileSearch = 3;
 var path = Directory.GetCurrentDirectory();
 var filesName = new List<string>();
-var needCountFileSearch = 3;
 var fileFinder = new FileFinder();
 
 fileFinder.FileFound += (s, e) =>
